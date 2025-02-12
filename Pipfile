@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+opencv-python = "*"
+numpy = "*"
+pytube = "*"
+ultralytics = "*"
+ffmpeg = "*"
+torch = ">=1.8.0"
+torchvision = ">=0.9.0"
+tqdm = "*"
+pillow = "*"
+segmentation-models-pytorch = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
+python_full_version = "3.10.14"

@@ -4,5 +4,4 @@ datasets/
 predictions/
 test/
 
-Pipfile
 Pipfile.lock
