@@ -239,15 +239,6 @@ your-project/
 - **Extensibility:**  
   The `get_model()` function in `model.py` is designed to easily add more architectures in the future. Simply follow the pattern shown to integrate additional models.
 
-## Contact
-
-For any questions or suggestions, please feel free to open an issue or contact the repository maintainer.
-
 ---
 
 Happy segmenting!
-```
-
----
-
-This **README.md** should provide users with clear, step-by-step instructions on how to set up, train, and run inference (including processing both images and videos) with your semantic segmentation project. Adjust any paths or parameter defaults as needed for your specific environment.
