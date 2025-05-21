@@ -3,5 +3,6 @@ checkpoints/
 datasets/
 predictions/
 test/
+__pycache__/
 
 Pipfile.lock

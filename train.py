@@ -3,11 +3,13 @@ import os
 import argparse
 import torch
 import torch.nn as nn
-import torch.optim as optim
+# 由 optimizer.py 匯入 get_optimizer
+from optimizer import get_optimizer
 from dataset import SegmentationDataset
 from model import get_model
 from trainer import Trainer
 import torchvision.transforms as transforms
+from loss import get_loss  # 若需要使用 loss.py 中的損失函式
 
 def main(args):
     # 設定設備（GPU 或 CPU）
@@ -22,7 +24,7 @@ def main(args):
     
     # 定義轉換（例如將影像 resize 為 640x640，再轉為 Tensor）
     transform = transforms.Compose([
-        transforms.Resize((640,640)),
+        transforms.Resize((640, 640)),
         transforms.ToTensor(),
     ])
     
@@ -46,7 +48,7 @@ def main(args):
         num_classes = 2
     print(f"Number of classes: {num_classes}")
     
-    # 建立模型：呼叫 model.py 中的 get_model()，並根據命令列參數設定 encoder 及模型名稱
+    # 建立模型：根據命令列參數設定 encoder 及模型名稱
     model = get_model(
         model_name=args.model_name,
         encoder_name=args.encoder_name,
@@ -57,10 +59,15 @@ def main(args):
     )
     model.to(device)
     
-    # 定義損失函數與優化器
-    criterion = nn.CrossEntropyLoss()
-    optimizer = optim.Adam(model.parameters(), lr=args.learning_rate)
+    # 選擇損失函式（此處可根據需求調整，預設若選 "crossentropy" 則使用 nn.CrossEntropyLoss()）
+    if args.loss_fn.lower() == "crossentropy":
+        criterion = nn.CrossEntropyLoss()
+    else:
+        criterion = get_loss(args.loss_fn, mode="multiclass", classes=list(range(num_classes)), from_logits=True)
     
+    # 使用 optimizer.py 建立優化器
+    optimizer = get_optimizer(args.optimizer, model.parameters(), lr=args.learning_rate)
+
     # 建立 Trainer 並開始訓練
     trainer = Trainer(model, train_dataset, valid_dataset, optimizer, criterion, device,
                       batch_size=args.batch_size, num_workers=args.num_workers, save_dir=args.checkpoints_dir)
@@ -74,19 +81,34 @@ if __name__ == "__main__":
                         help="驗證資料夾路徑，內含 images 與 masks")
     parser.add_argument("--checkpoints_dir", type=str, default="checkpoints",
                         help="儲存 checkpoint 的資料夾")
-    parser.add_argument("--epochs", type=int, default=50, help="訓練 epoch 數")
+    parser.add_argument("--epochs", type=int, default=100, help="訓練 epoch 數")
     parser.add_argument("--batch_size", type=int, default=4, help="batch 大小")
     parser.add_argument("--num_workers", type=int, default=4, help="DataLoader workers 數")
     parser.add_argument("--learning_rate", type=float, default=1e-4, help="學習率")
-    parser.add_argument("--save_interval", type=int, default=5, help="每隔幾個 epoch 儲存一次 checkpoint")
+    parser.add_argument("--save_interval", type=int, default=50, help="每隔幾個 epoch 儲存一次 checkpoint")
     
-    # 新增模型選擇參數
-    parser.add_argument("--model_name", type=str, default="segformer",
-                        help="所使用的 segmentation model，選項包括：unet, unet++, fpn, pspnet, deeplabv3, deeplabv3+, linknet, manet, pan, upernet, segformer")
-    parser.add_argument("--encoder_name", type=str, default="mit_b0",
-                        help="Encoder backbone（預設: resnet34）")
+    # 模型相關參數
+    parser.add_argument("--model_name", type=str, default="deeplabv3+",
+                        help="所使用的 segmentation model，選項包括： unet, unet++, fpn, pspnet, deeplabv3, deeplabv3+, linknet, manet, pan, upernet, segformer")
+    parser.add_argument("--encoder_name", type=str, default="resnext50_32x4d",
+                        help="Encoder backbone（預設: resnet34 ），選項包括： resnet18, resnet34, resnet50, resnext50_32x4d, \
+                                                                        vgg11, vgg11_bn, vgg13, vgg13_bn, vgg16, vgg16_bn, vgg19, vgg19_bn, \
+                                                                        mobilenet_v2, mobileone_s0, mobileone_s1, mobileone_s2, mobileone_s3, mobileone_s4, \
+                                                                        efficientnet-b0, efficientnet-b1, efficientnet-b2, efficientnet-b3, efficientnet-b4, efficientnet-b5, \
+                                                                        timm-efficientnet-b0, timm-efficientnet-b1, timm-efficientnet-b2, timm-efficientnet-b3, timm-efficientnet-b4, timm-efficientnet-b5, \
+                                                                        timm-tf_efficientnet_lite0, timm-tf_efficientnet_lite1, timm-tf_efficientnet_lite2, timm-tf_efficientnet_lite3, timm-tf_efficientnet_lite4, \
+                                                                        mit_b0, mit_b1, mit_b2, \
+                                                                        ")
     parser.add_argument("--encoder_weights", type=str, default="imagenet",
                         help="Encoder 預訓練權重（預設: imagenet）")
+    
+    # 損失函式選擇參數
+    parser.add_argument("--loss_fn", type=str, default="focal",
+                        help="選擇使用的損失函式，可選項包括：crossentropy, jaccard, dice, tversky, focal, lovasz, softcrossentropy; Binary Segmentation: mcc, softbce")
+    
+    # 新增優化器選擇參數
+    parser.add_argument("--optimizer", type=str, default="radam",
+                        help="選擇使用的優化器，可選項包括：adam, adamw, sgd, radam, rmsprop, adadelta, adagrad")
     
     args = parser.parse_args()
     main(args)

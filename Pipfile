@@ -14,6 +14,7 @@ torchvision = ">=0.9.0"
 tqdm = "*"
 pillow = "*"
 segmentation-models-pytorch = "*"
+nvitop = "*"
 
 [dev-packages]
 

@@ -210,7 +210,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_path", type=str, required=True,
+    parser.add_argument("--model_path", type=str, default="checkpoints",
                         help="訓練好模型的 checkpoint 路徑 (.pth 檔案)")
     parser.add_argument("--input_dir", type=str, default="test",
                         help="包含待測試圖片與影片的資料夾")
@@ -218,10 +218,10 @@ if __name__ == "__main__":
                         help="儲存分割結果圖與疊圖的資料夾")
     
     # 新增模型選擇參數
-    parser.add_argument("--model_name", type=str, default="segformer",
+    parser.add_argument("--model_name", type=str, default="unet",
                         help="所使用的 segmentation model，選項包括：unet, unet++, fpn, pspnet, deeplabv3, deeplabv3+, linknet, manet, pan, upernet, segformer")
-    parser.add_argument("--encoder_name", type=str, default="mit_b0",
-                        help="Encoder backbone（預設: resnet34）")
+    parser.add_argument("--encoder_name", type=str, default="resnext50_32x4d",
+                        help="Encoder backbone（預設: resnet34 ）")
     parser.add_argument("--encoder_weights", type=str, default="imagenet",
                         help="Encoder 預訓練權重（預設: imagenet）")
     

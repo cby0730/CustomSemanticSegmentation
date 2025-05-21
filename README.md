@@ -53,8 +53,8 @@ Make sure you have Python 3.7+ installed. The required Python packages are liste
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/your-segmentation-project.git
-   cd your-segmentation-project
+   git clone git@github.com:cby0730/CustomSemanticSegmentation.git
+   cd CustomSemanticSegmentation
    ```
 
 2. **Install dependencies:**
@@ -63,6 +63,10 @@ Make sure you have Python 3.7+ installed. The required Python packages are liste
 
    ```bash
    pip install -r requirements.txt
+
+   # Use pipenv virtual environment
+   pipenv --python 3.10.14
+   pipenv install -r requirements.txt
    ```
 
    The main dependencies include:
@@ -89,9 +93,8 @@ data/
 │                          # Example content:
 │                           # Pixel Value,Class
 │                           # 0,background
-│                           # 1,beach
-│                           # 2,ocean
-│                           # 3,sky
+│                           # 1,road
+│                           # 2,sidewalk
 └── valid/
     ├── images/           # Validation images
     └── masks/            # Validation masks (same naming convention as above)
@@ -225,7 +228,7 @@ your-project/
 ## Additional Notes
 
 - **FFmpeg:**  
-  Make sure FFmpeg is installed on your system as it is used for video conversion. You can install it via your package manager (e.g., `sudo apt-get install ffmpeg` on Ubuntu) or download it from [FFmpeg.org](https://ffmpeg.org/).
+  Make sure FFmpeg is installed on your system as it is used for video conversion. You can install it via your package manager (e.g., `sudo apt install ffmpeg` on Ubuntu) or download it from [FFmpeg.org](https://ffmpeg.org/).
 
 - **Customization:**  
   You can modify the image transformation parameters (e.g., resize dimensions) in both `train.py` and `predict.py` if needed. Ensure that the input size is appropriate for your chosen model architecture (many require dimensions divisible by 32).
