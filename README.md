@@ -30,13 +30,13 @@ Here are some demo videos showing the semantic segmentation results:
   <tr>
     <td align="center">
       <b>Demo Video 1</b><br>
-      <video src="demo_video/video_8_overlay_final.mp4" width="400" controls>
+      <video src="demo_video/video_10_overlay_final.mp4" width="400" controls>
         Your browser does not support the video tag.
       </video>
     </td>
     <td align="center">
       <b>Demo Video 2</b><br>
-      <video src="demo_video/video_10_overlay_final.mp4" width="400" controls>
+      <video src="demo_video/video_11_overlay_final.mp4" width="400" controls>
         Your browser does not support the video tag.
       </video>
     </td>
