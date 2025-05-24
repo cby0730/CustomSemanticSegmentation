@@ -20,31 +20,6 @@ This project provides a flexible framework for training and inference of semanti
 
 The framework is designed to be generic and can be applied to any semantic segmentation dataset with minimal changes.
 
-## Demo
-
-Here are some demo videos showing the semantic segmentation results:
-
-### Video Segmentation Results
-
-<table>
-  <tr>
-    <td align="center">
-      <b>Demo Video 1</b><br>
-      <video src="demo_video/video_10_overlay_final.mp4" width="400" controls>
-        Your browser does not support the video tag.
-      </video>
-    </td>
-    <td align="center">
-      <b>Demo Video 2</b><br>
-      <video src="demo_video/video_11_overlay_final.mp4" width="400" controls>
-        Your browser does not support the video tag.
-      </video>
-    </td>
-  </tr>
-</table>
-
-*Note: These videos demonstrate the overlay results where the original video is combined with the predicted segmentation masks. The different colors represent different semantic classes as defined in the training dataset.*
-
 ## Table of Contents
 
 - [Features](#features)
@@ -69,6 +44,21 @@ Here are some demo videos showing the semantic segmentation results:
   - A `_classes.csv` file is included that specifies the pixel value and the class name.
 - **Video Processing:** The `predict.py` script can process both images and videos. Videos are converted to a common MP4 format using FFmpeg.
 - **Easy-to-Use Training Pipeline:** The `train.py` script reads the dataset, builds the chosen model, and starts training while saving checkpoints periodically.
+
+## Demo
+
+Here are some demo videos showing the semantic segmentation results:
+
+### Video Segmentation Results
+
+| Demo Video 1 | Demo Video 2 |
+|:------------:|:------------:|
+| [![Demo Video 1](https://img.shields.io/badge/▶️_Video_10-Watch_Demo-blue?style=for-the-badge)](demo_video/video_10_overlay_final.mp4) | [![Demo Video 2](https://img.shields.io/badge/▶️_Video_11-Watch_Demo-green?style=for-the-badge)](demo_video/video_11_overlay_final.mp4) |
+| *Semantic segmentation overlay on test video 10* | *Semantic segmentation overlay on test video 11* |
+
+> **Note:** Click the badges above to download and view the demo videos. These videos demonstrate the overlay results where the original video is combined with the predicted segmentation masks. The different colors represent different semantic classes as defined in the training dataset.
+
+> **Alternative Viewing:** You can also view the demo videos by navigating to the `demo_video/` folder in this repository after cloning.
 
 ## Requirements
 
