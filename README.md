@@ -53,12 +53,10 @@ Here are some demo videos showing the semantic segmentation results:
 
 | Demo Video 1 | Demo Video 2 |
 |:------------:|:------------:|
-| [![Demo Video 1](https://img.shields.io/badge/▶️_Video_10-Watch_Demo-blue?style=for-the-badge)](demo_video/video_10_overlay_final.mp4) | [![Demo Video 2](https://img.shields.io/badge/▶️_Video_11-Watch_Demo-green?style=for-the-badge)](demo_video/video_11_overlay_final.mp4) |
-| *Semantic segmentation overlay on test video 10* | *Semantic segmentation overlay on test video 11* |
+| [![Semantic Segmentation Demo 1](https://img.youtube.com/vi/hn7TituctV8/maxresdefault.jpg)](https://youtu.be/hn7TituctV8) | [![Semantic Segmentation Demo 2](https://img.youtube.com/vi/AOhJZ1Tw4KM/maxresdefault.jpg)](https://youtu.be/AOhJZ1Tw4KM) |
+| **Click to watch on YouTube** | **Click to watch on YouTube** |
 
-> **Note:** Click the badges above to download and view the demo videos. These videos demonstrate the overlay results where the original video is combined with the predicted segmentation masks. The different colors represent different semantic classes as defined in the training dataset.
-
-> **Alternative Viewing:** You can also view the demo videos by navigating to the `demo_video/` folder in this repository after cloning.
+> **Note:** These videos demonstrate the overlay results where the original video is combined with the predicted segmentation masks. The different colors represent different semantic classes as defined in the training dataset. Click on the thumbnails above to watch the videos on YouTube.
 
 ## Requirements
 
@@ -247,10 +245,7 @@ your-project/
   Make sure FFmpeg is installed on your system as it is used for video conversion. You can install it via your package manager (e.g., `sudo apt install ffmpeg` on Ubuntu) or download it from [FFmpeg.org](https://ffmpeg.org/).
 
 - **Demo Videos:**  
-  The demo videos are stored in the `demo_video/` directory and are tracked by regular Git. If you encounter issues with large files, consider:
-  - Compressing videos further
-  - Using external hosting (YouTube, Google Drive) and linking them in the README
-  - Using GitHub Releases for large assets
+  The demo videos are hosted on YouTube for better accessibility and faster loading. Click on the video thumbnails in the Demo section to watch them directly on YouTube.
 
 - **Customization:**  
   You can modify the image transformation parameters (e.g., resize dimensions) in both `train.py` and `predict.py` if needed. Ensure that the input size is appropriate for your chosen model architecture (many require dimensions divisible by 32).
