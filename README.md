@@ -60,7 +60,7 @@ Here are some demo videos showing the semantic segmentation results:
 
 ## Requirements
 
-Make sure you have Python 3.7+ installed. The required Python packages are listed in `requirements.txt`.
+The required Python packages are listed in `requirements.txt`.
 
 ## Installation
 
