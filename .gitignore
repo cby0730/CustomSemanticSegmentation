@@ -4,5 +4,6 @@ datasets/
 predictions/
 test/
 __pycache__/
+venv/
 
 Pipfile.lock

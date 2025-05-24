@@ -4,7 +4,7 @@
 # 並根據 optimizer 特性自動設定相對應的 learning rate。
 
 # 模型選項
-models=("unet" "unet++" "fpn" "pspnet" "deeplabv3" "deeplabv3+" "linknet" "manet" "pan" "upernet" "segformer")
+models=("segformer") # "unet" "unet++" "fpn" "pspnet" "deeplabv3" "deeplabv3+" "linknet" "manet" "pan" "upernet" 
 
 # 非 segformer 模型允許的 encoder（排除 mit_b0, mit_b1, mit_b2）
 non_mit_encoders=("resnet18" "resnet34" "resnet50" "resnext50_32x4d" \
@@ -28,7 +28,7 @@ optimizers=("adam" "adamw" "sgd" "radam" "rmsprop" "adadelta" "adagrad")
 train_data_dir="data/train"
 valid_data_dir="data/valid"
 epochs=100
-batch_size=4
+batch_size=32
 num_workers=4
 save_interval=50
 encoder_weights="imagenet"

@@ -4,3 +4,5 @@ tqdm
 Pillow
 numpy
 segmentation-models-pytorch
+matplotlib
+opencv-python

@@ -20,9 +20,35 @@ This project provides a flexible framework for training and inference of semanti
 
 The framework is designed to be generic and can be applied to any semantic segmentation dataset with minimal changes.
 
+## Demo
+
+Here are some demo videos showing the semantic segmentation results:
+
+### Video Segmentation Results
+
+<table>
+  <tr>
+    <td align="center">
+      <b>Demo Video 1</b><br>
+      <video src="demo_video/video_8_overlay_final.mp4" width="400" controls>
+        Your browser does not support the video tag.
+      </video>
+    </td>
+    <td align="center">
+      <b>Demo Video 2</b><br>
+      <video src="demo_video/video_10_overlay_final.mp4" width="400" controls>
+        Your browser does not support the video tag.
+      </video>
+    </td>
+  </tr>
+</table>
+
+*Note: These videos demonstrate the overlay results where the original video is combined with the predicted segmentation masks. The different colors represent different semantic classes as defined in the training dataset.*
+
 ## Table of Contents
 
 - [Features](#features)
+- [Demo](#demo)
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Data Structure](#data-structure)
@@ -229,6 +255,12 @@ your-project/
 
 - **FFmpeg:**  
   Make sure FFmpeg is installed on your system as it is used for video conversion. You can install it via your package manager (e.g., `sudo apt install ffmpeg` on Ubuntu) or download it from [FFmpeg.org](https://ffmpeg.org/).
+
+- **Demo Videos:**  
+  The demo videos are stored in the `demo_video/` directory and are tracked by regular Git. If you encounter issues with large files, consider:
+  - Compressing videos further
+  - Using external hosting (YouTube, Google Drive) and linking them in the README
+  - Using GitHub Releases for large assets
 
 - **Customization:**  
   You can modify the image transformation parameters (e.g., resize dimensions) in both `train.py` and `predict.py` if needed. Ensure that the input size is appropriate for your chosen model architecture (many require dimensions divisible by 32).

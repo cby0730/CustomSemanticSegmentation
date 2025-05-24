@@ -218,9 +218,9 @@ if __name__ == "__main__":
                         help="儲存分割結果圖與疊圖的資料夾")
     
     # 新增模型選擇參數
-    parser.add_argument("--model_name", type=str, default="unet",
+    parser.add_argument("--model_name", type=str, default="segformer",
                         help="所使用的 segmentation model，選項包括：unet, unet++, fpn, pspnet, deeplabv3, deeplabv3+, linknet, manet, pan, upernet, segformer")
-    parser.add_argument("--encoder_name", type=str, default="resnext50_32x4d",
+    parser.add_argument("--encoder_name", type=str, default="mit_b1",
                         help="Encoder backbone（預設: resnet34 ）")
     parser.add_argument("--encoder_weights", type=str, default="imagenet",
                         help="Encoder 預訓練權重（預設: imagenet）")
